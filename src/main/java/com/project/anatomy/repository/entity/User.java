@@ -19,6 +19,7 @@ public class User {
 
     @Column(nullable = false, length = 100)
     private String email;
+
     private int points;
 
 
