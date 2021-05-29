@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>AnatomyApp - home</title>
+<!--
     <link rel="stylesheet" href="main/java/resources/css/bootstrap.min.css">
+-->
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
 </head>
 <body>
-  <h1>Welcome to AnatomyApp</h1>
+<div class="container text-center">
+    <div>
+    <h1>Welcome to AnatomyApp</h1>
+    </div>
+    <div>
+        <h3><a th:href="@{/register}">Register</a></h3>
+    </div>
+</div>
 </body>
 </html>
