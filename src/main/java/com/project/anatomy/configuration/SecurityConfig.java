@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/list_users").authenticated()
+                .antMatchers("/console/**").permitAll()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
@@ -57,5 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/list_users") //gdzie przekiwrowujemy użytkownika po zalogowaniu
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
+
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
 }
