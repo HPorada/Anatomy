@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -66,6 +67,16 @@ public class AppController {
     @GetMapping("/nextFlashcard")
     public String viewNextFlashcard(Model model){
         Long id = 2L;
+        model.addAttribute("eng", answersList.findById(id).get().getEng_bodyc());
+        model.addAttribute("lat", answersList.findById(id).get().getLat_body());
+        model.addAttribute("pol", answersList.findById(id).get().getPol_body());
+        model.addAttribute("image", "Images/" + answersList.findById(id).get().getImage());
+        model.addAttribute("id", answersList.findById(id).get().getAnswer_id());
+        return "flashcard";
+    }
+
+    @GetMapping("/nextFlash")
+    public String getNextFlashcard(@RequestParam("paramName") Long id, Model model){
         model.addAttribute("eng", answersList.findById(id).get().getEng_bodyc());
         model.addAttribute("lat", answersList.findById(id).get().getLat_body());
         model.addAttribute("pol", answersList.findById(id).get().getPol_body());

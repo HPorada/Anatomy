@@ -49,8 +49,9 @@
         <h3 th:text="${lat}"></h3>
         <h3 th:text="${pol}"></h3>
     </div>
-    <div style="margin-bottom: 30px">
-        <a th:href="@{/}" class="btn btn-lg btn-dark">Next flashcard</a>
+    <div th:with="idFlash=${id}" style="margin-bottom: 30px">
+        <p th:with="idFlash=${idFlash + 1}" th:text="${idFlash}"></p>
+        <a th:href="@{/nextFlashcard}" class="btn btn-lg btn-dark">Next flashcard</a>
     </div>
 </div>
 
