@@ -18,14 +18,17 @@ public class Answer {
     @Column(nullable = false, length = 100)
     private String eng_bodyc;
 
+    @Column(nullable = false, length = 100)
+    private String image;
+
     public Answer() {
     }
 
-    public Answer(Long answer_id, String pol_body, String lat_body, String eng_bodyc) {
-        this.answer_id = answer_id;
+    public Answer(String pol_body, String lat_body, String eng_bodyc, String image) {
         this.pol_body = pol_body;
         this.lat_body = lat_body;
         this.eng_bodyc = eng_bodyc;
+        this.image = image;
     }
 
     public Long getAnswer_id() {
@@ -58,5 +61,13 @@ public class Answer {
 
     public void setEng_bodyc(String eng_bodyc) {
         this.eng_bodyc = eng_bodyc;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
