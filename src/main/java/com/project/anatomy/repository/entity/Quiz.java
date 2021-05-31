@@ -24,8 +24,7 @@ public class Quiz {
     public Quiz() {
     }
 
-    public Quiz(Long quiz_id, String quiz_name, String quiz_description, int max_points, String category) {
-        this.quiz_id = quiz_id;
+    public Quiz(String quiz_name, String quiz_description, int max_points, String category) {
         this.quiz_name = quiz_name;
         this.quiz_description = quiz_description;
         this.max_points = max_points;

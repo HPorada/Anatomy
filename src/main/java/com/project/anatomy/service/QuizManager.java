@@ -5,6 +5,8 @@ import com.project.anatomy.repository.QuizRepository;
 import com.project.anatomy.repository.entity.Answer;
 import com.project.anatomy.repository.entity.Quiz;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -19,11 +21,20 @@ public class QuizManager {
         this.quizRepository = quizRepository;
     }
 
-    public Iterable<Quiz> findAll(){
+    public Iterable<Quiz> findAll() {
         return quizRepository.findAll();
     }
 
-    public Optional<Quiz> findById(Long id){
+    public Optional<Quiz> findById(Long id) {
         return quizRepository.findById(id);
+    }
+
+    public Quiz save(Quiz quiz) {
+        return quizRepository.save(quiz);
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void fillCustomersDB(){
+        save(new Quiz("Skull", "Bones of the skull", 15, "Skeletal system"));
     }
 }
