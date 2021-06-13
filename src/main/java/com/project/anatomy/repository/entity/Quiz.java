@@ -10,7 +10,7 @@ public class Quiz {
     private Long quiz_id;
 
     @Column(nullable = false, length = 30)
-    private String quiz_name;
+    private String quizName;
 
     @Column(nullable = false, length = 100)
     private String quiz_description;
@@ -24,8 +24,8 @@ public class Quiz {
     public Quiz() {
     }
 
-    public Quiz(String quiz_name, String quiz_description, int max_points, String category) {
-        this.quiz_name = quiz_name;
+    public Quiz(String quizName, String quiz_description, int max_points, String category) {
+        this.quizName = quizName;
         this.quiz_description = quiz_description;
         this.max_points = max_points;
         this.category = category;
@@ -39,12 +39,12 @@ public class Quiz {
         this.quiz_id = quiz_id;
     }
 
-    public String getQuiz_name() {
-        return quiz_name;
+    public String getQuizName() {
+        return quizName;
     }
 
-    public void setQuiz_name(String quiz_name) {
-        this.quiz_name = quiz_name;
+    public void setQuizName(String quiz_name) {
+        this.quizName = quiz_name;
     }
 
     public String getQuiz_description() {

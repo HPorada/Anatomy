@@ -1,5 +1,6 @@
 package com.project.anatomy.controller;
 
+import com.project.anatomy.ChooseQuizForm;
 import com.project.anatomy.repository.UserRepository;
 import com.project.anatomy.repository.entity.Answer;
 import com.project.anatomy.repository.entity.User;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class AppController {
     private UserRepository repo;
 
     private AnswerManager answersList;
+    private int test=0;
 
     @Autowired
     public AppController(AnswerManager answersList) {
@@ -27,7 +30,8 @@ public class AppController {
     }
 
     @GetMapping("/")
-    public String viewHomePage(){
+    public String viewHomePage(Model model){
+        model.addAttribute("options", new ChooseQuizForm());
         return "index";
     }
 
@@ -52,25 +56,4 @@ public class AppController {
         return "users";
     }
 
-    @GetMapping("/flashcard")
-    public String viewFlashcard(Model model){
-        Long id = 1L;
-        model.addAttribute("eng", answersList.findById(id).get().getEng_bodyc());
-        model.addAttribute("lat", answersList.findById(id).get().getLat_body());
-        model.addAttribute("pol", answersList.findById(id).get().getPol_body());
-        model.addAttribute("image", "Images/" + answersList.findById(id).get().getImage());
-        model.addAttribute("id", answersList.findById(id).get().getAnswer_id());
-        return "flashcard";
-    }
-
-    @GetMapping("/nextFlashcard")
-    public String viewNextFlashcard(Model model){
-        Long id = 2L;
-        model.addAttribute("eng", answersList.findById(id).get().getEng_bodyc());
-        model.addAttribute("lat", answersList.findById(id).get().getLat_body());
-        model.addAttribute("pol", answersList.findById(id).get().getPol_body());
-        model.addAttribute("image", "Images/" + answersList.findById(id).get().getImage());
-        model.addAttribute("id", answersList.findById(id).get().getAnswer_id());
-        return "flashcard";
-    }
 }

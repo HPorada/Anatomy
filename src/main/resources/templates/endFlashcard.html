@@ -2,7 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Flashcard</title>
+    <title>AnatomyApp - home</title>
+    <!--
+        <link rel="stylesheet" href="main/java/resources/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    -->
     <link rel="stylesheet" type="text/css" href="cssFiles/bootstrap.min.css"/>
 </head>
 <body>
@@ -38,23 +43,19 @@
     </div>
 </nav>
 
-
 <div class="container text-center">
-    <div style="margin-top: 10px">
-        <h1 th:text="${desc}"></h1>
+    <div style="margin-top: 30px">
+        <h1>You ended studying for this category!</h1>
     </div>
-        <div style="margin-bottom: 20px">
-            <img th:src="${image}" width="650" height="600"/>
-        </div>
-        <div style="margin-bottom: 20px">
-            <h3 th:text="${eng}"></h3>
-            <h3 th:text="${lat}"></h3>
-            <h3 th:text="${pol}"></h3>
-        </div>
-        <div style="margin-bottom: 30px">
-            <a th:href="@{/nextFlashcard}" class="btn btn-lg btn-dark">Next flashcard</a>
-        </div>
+    <div style="margin-top: 20px">
+        <img src="/Images/skeleton.png"/>
+    </div>
+    <div style="margin-bottom: 30px">
+        <a th:href="@{/}" class="btn btn-lg btn-dark">Return to main page</a>
+    </div>
 </div>
+
+
 
 </body>
 </html>
