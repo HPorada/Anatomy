@@ -26,4 +26,12 @@ public class UserManager {
     public Optional<User> findById(Long id){
         return userRepository.findById(id);
     }
+
+    public User findByLogin(String login){ return userRepository.findByLogin(login); }
+
+    public void updatePoints(String login, int points) {
+        User user = userRepository.findByLogin(login);
+        user.setPoints(points);
+        userRepository.save(user);
+    }
 }

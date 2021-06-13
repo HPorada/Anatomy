@@ -3,14 +3,17 @@ package com.project.anatomy.controller;
 import com.project.anatomy.ChooseQuizForm;
 import com.project.anatomy.UserInput;
 import com.project.anatomy.repository.entity.Answer;
+import com.project.anatomy.repository.entity.User;
 import com.project.anatomy.service.AnswerManager;
 import com.project.anatomy.service.QuizManager;
+import com.project.anatomy.service.UserManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import java.security.Principal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +22,9 @@ import java.util.List;
 public class AnswerController {
 
     private AnswerManager answersList;
+    private UserManager userManager;
     private QuizManager quiz;
+
     private Long quizId = 0L; //id quizu
     private List<Answer> questionsList = new ArrayList<>();
     private Long questionNumber = 0L; //numer pytania
@@ -32,9 +37,10 @@ public class AnswerController {
     private int progress = 0; //na którym pytaniu
 
     @Autowired
-    public AnswerController(AnswerManager answersList, QuizManager quiz) {
+    public AnswerController(AnswerManager answersList, QuizManager quiz, UserManager userManager) {        this.answersList = answersList;
         this.answersList = answersList;
         this.quiz = quiz;
+        this.userManager=userManager;
     }
 
     @PostMapping("/flashcard")
@@ -101,8 +107,7 @@ public class AnswerController {
     }
 
     @PostMapping("/nextQuiz")
-    public String viewNextQuiz(Model model, @ModelAttribute UserInput userInput) {
-
+    public String viewNextQuiz(Model model, @ModelAttribute UserInput userInput, Principal principal){
         String correctAnswer = "";
         String input = userInput.getInput();
         String page = "";
@@ -129,6 +134,9 @@ public class AnswerController {
             model.addAttribute("language", "Enter your answers in: " + language);
             page = "quiz";
         } else {
+            int totalPoints = userManager.findByLogin(principal.getName()).getPoints();
+            totalPoints=totalPoints+points;
+            userManager.updatePoints(principal.getName(), totalPoints);
             model.addAttribute("points", "Your total score: " + points + "/" + questions);
             page = "endQuiz";
         }
