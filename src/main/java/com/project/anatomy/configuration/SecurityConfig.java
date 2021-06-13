@@ -59,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .antMatchers("/list_users").authenticated()
+                .antMatchers("/flashcard").authenticated()
                 .antMatchers("/console/**").permitAll()
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/**/*.js", "/**/*.css").permitAll()

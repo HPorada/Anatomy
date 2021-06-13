@@ -52,7 +52,8 @@ public class AppController {
     }
 
     @GetMapping("/list_users")
-    public String viewUsersList(){
+    public String viewUsersList(Model model){
+        model.addAttribute("options", new ChooseQuizForm());
         return "users";
     }
 

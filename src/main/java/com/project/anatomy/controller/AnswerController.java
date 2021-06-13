@@ -39,7 +39,8 @@ public class AnswerController {
     public String viewFlashcard(Model model, @ModelAttribute ChooseQuizForm options){
 
         String quizName = options.getName();
-        quizId = quiz.findByName(quizName).get().getQuiz_id();
+        /*quizId = quiz.findByName(quizName).get().getQuiz_id();*/
+        quizId = 16L;
         quizDesc = quiz.findByName(quizName).get().getQuiz_description();
         questionsList = answersList.findByQuizId(quizId);
         questionNumber = questionsList.get(0).getAnswer_id();

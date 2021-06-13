@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>AnatomyApp - home</title>
-<!--
-    <link rel="stylesheet" href="main/java/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
--->
+    <!--
+        <link rel="stylesheet" href="main/java/resources/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    -->
     <link rel="stylesheet" type="text/css" href="cssFiles/bootstrap.min.css"/>
 </head>
 <body>
@@ -15,19 +15,20 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" th:href="@{/}">AnatomyApp</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link active" th:href="@{/}">AnatomyApp
                         <span class="visually-hidden">(current)</span>
                     </a>
-                </li>
+                </li>-->
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/list_users}">List all users</a>
+                    <a class="nav-link" th:href="@{/list_users}">Account</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/register}">Register</a>
@@ -44,43 +45,61 @@
 </nav>
 
 <div class="container text-center">
-    <div>
-    <h1>Welcome to AnatomyApp</h1>
+    <div style="margin-top: 50px">
+        <h1>Welcome to AnatomyApp</h1>
     </div>
-    <div>
-        <h3><a th:href="@{/list_users}">List all users</a></h3>
-        <h3><a th:href="@{/register}">Register</a></h3>
-        <h3><a th:href="@{/login}">Login</a></h3>
+    <hr>
+    <div style="margin-top: 10px">
+        <img src="Images/czlowiek.jpg" alt="Człowiek witruwiański">
+    </div>
+    <div style="margin-top: 10px">
+
+        <!--<form id="firstBtn" th:href="@{/register}">
+            <div>
+                <input type="button" class="btn btn-dark btn-lg" value="Register">
+            </div>
+            &lt;!&ndash;
+                        <button type="button" class="btn btn-dark btn-lg" th:onclick="@{/register}">Register</button>
+            &ndash;&gt;
+        </form>
+        <button type="button" class="btn btn-dark btn-lg" th:onclick="@{/login}">Login</button>-->
+
+        <a th:href="@{/register}"><button type="button" class="btn btn-dark btn-lg">Register</button></a>
+        <a th:href="@{/login}"><button type="button" class="btn btn-dark btn-lg">Login</button></a>
+
+        <!--<h3><a th:href="@{/register}">Register</a></h3>
+        <h3><a th:href="@{/login}">Login</a></h3>-->
     </div>
 </div>
 
-<div class="container text-center">
+<div class="container text-center" style="margin-top: 25px">
+    <hr>
     <div class="row justify-content-md-center">
-   <div class="col-4">
-       <div class="card">
-           <div class="card-body">
-               <h4 class="card-title">Study mode</h4>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Study mode</h4>
 
-               <form th:action="@{/flashcard}" method="post"
-                     style="max-width: 600px; margin: 0 auto;"
-                     th:object="${options}">
+                    <form th:action="@{/flashcard}" method="post"
+                          style="max-width: 600px; margin: 0 auto;"
+                          th:object="${options}">
 
-                   <div class="form-group" >
-                       <label for="exampleSelect1" class="form-label mt-4">Choose flashcards</label>
-                       <select class="form-select" id="exampleSelect1" required th:field="*{name}">
-                           <option th:value="Skull" th:text="Skull"></option>
-                       </select>
-                   </div>
+                        <div class="form-group">
+                            <label for="exampleSelect1" class="form-label mt-4">Choose flashcards</label>
+                            <select class="form-select" id="exampleSelect1" required th:field="*{name}">
+                                <option th:value="Skull" th:text="Skull"></option>
+                            </select>
+                        </div>
 
-                   <div style="margin-top: 10px">
-                    <button type="submit" class="btn btn-dark">Let's study</button>
-                   </div>
+                        <div style="margin-top: 10px">
+                            <button type="submit" class="btn btn-dark">Let's study</button>
+                        </div>
 
-               </form>
+                    </form>
 
-           </div>
-       </div>
-   </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
