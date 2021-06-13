@@ -66,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .usernameParameter("email")
+                .usernameParameter("login")
                 .defaultSuccessUrl("/list_users") //gdzie przekiwrowujemy użytkownika po zalogowaniu
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
