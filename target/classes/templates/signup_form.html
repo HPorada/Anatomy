@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/list_users}">List all users</a>
+                    <a class="nav-link" th:href="@{/list_users}">Account</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/register}">Register</a>
@@ -50,7 +50,7 @@
           th:object="${user}">
 
         <div class="m-3">
-            <div class="form-group row">
+            <div class="form-group row" style="margin-top: 10px">
                 <label class="col-form-label col-4">Login</label>
                 <div class="col-8">
                     <input type="text" class="form-control" th:field="*{login}" required
@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row" style="margin-top: 10px">
                 <label class="col-form-label col-4">Password</label>
                 <div class="col-8">
                     <input type="password" class="form-control" th:field="*{password}" required
@@ -68,7 +68,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row" style="margin-top: 10px">
                 <label class="col-form-label col-4">E-mail</label>
                 <div class="col-8">
                     <input type="email" class="form-control" th:field="*{email}" required
@@ -76,8 +76,7 @@
                     />
                 </div>
             </div>
-            <div>
-
+            <div style="margin-top: 10px">
                 <button type="submit" class="btn btn-dark">Sign up</button>
             </div>
 
