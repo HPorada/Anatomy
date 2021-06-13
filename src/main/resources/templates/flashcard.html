@@ -41,19 +41,19 @@
 
 <div class="container text-center">
     <div style="margin-top: 10px">
-        <h1>Bones of the skull</h1>
+        <h1 th:text="${desc}"></h1>
     </div>
-    <div style="margin-bottom: 20px">
-        <img th:src="${image}" width="650" height="600"/>
-        <h3 th:text="${eng}"></h3>
-        <h3 th:text="${lat}"></h3>
-        <h3 th:text="${pol}"></h3>
-    </div>
-    <div th:with="idFlash=${id}" style="margin-bottom: 30px">
-        <p th:with="idFlash=${idFlash + 1}"></p>
-        <input type="hidden" name="paramName" value="3"/>
-        <a th:href="@{/nextFlashcard}" class="btn btn-lg btn-dark">Next flashcard</a>
-    </div>
+        <div style="margin-bottom: 20px">
+            <img th:src="${image}" width="650" height="600"/>
+        </div>
+        <div style="margin-bottom: 20px">
+            <h3 th:text="${eng}"></h3>
+            <h3 th:text="${lat}"></h3>
+            <h3 th:text="${pol}"></h3>
+        </div>
+        <div style="margin-bottom: 30px">
+            <a th:href="@{/nextFlashcard}" class="btn btn-lg btn-dark">Next flashcard</a>
+        </div>
 </div>
 
 </body>

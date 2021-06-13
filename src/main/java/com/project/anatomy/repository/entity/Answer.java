@@ -21,14 +21,17 @@ public class Answer {
     @Column(nullable = false, length = 100)
     private String image;
 
+    private Long quizId;
+
     public Answer() {
     }
 
-    public Answer(String pol_body, String lat_body, String eng_bodyc, String image) {
+    public Answer(String pol_body, String lat_body, String eng_bodyc, String image, Long quizId) {
         this.pol_body = pol_body;
         this.lat_body = lat_body;
         this.eng_bodyc = eng_bodyc;
         this.image = image;
+        this.quizId = quizId;
     }
 
     public Long getAnswer_id() {

@@ -33,6 +33,10 @@ public class QuizManager {
         return quizRepository.save(quiz);
     }
 
+    public Optional<Quiz> findByName(String name){
+        return quizRepository.findByQuizName(name);
+    }
+
     @EventListener(ApplicationReadyEvent.class)
     public void fillCustomersDB(){
         save(new Quiz("Skull", "Bones of the skull", 15, "Skeletal system"));
