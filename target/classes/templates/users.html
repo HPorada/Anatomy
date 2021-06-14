@@ -36,14 +36,20 @@
     </div>
 </nav>
 
-<div class="container text-center">
+<div class="container text-center" style="margin-top: 50px">
     <div>
-        <h5>You have successfully logged in to the AnatomyApp</h5>
-        <br>
         <h1>Check your account information here</h1>
     </div>
     <div>
-        <p></p>
+        <br>
+        <h5><strong>Login</strong></h5>
+        <h6 th:text="${user.getLogin()}"></h6>
+        <br>
+        <h5><strong>E-mail</strong></h5>
+        <h6 th:text="${user.getEmail()}"></h6>
+        <br>
+        <h6><strong>Points</strong></h6>
+        <h6 th:text="${user.getPoints()}"></h6>
     </div>
 </div>
 

@@ -6,6 +6,8 @@ import com.project.anatomy.repository.entity.Answer;
 import com.project.anatomy.repository.entity.User;
 import com.project.anatomy.service.AnswerManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -22,7 +25,7 @@ public class AppController {
     private UserRepository repo;
 
     private AnswerManager answersList;
-    private int test=0;
+    private int test = 0;
 
     @Autowired
     public AppController(AnswerManager answersList) {
@@ -30,20 +33,20 @@ public class AppController {
     }
 
     @GetMapping("/")
-    public String viewHomePage(Model model){
+    public String viewHomePage(Model model) {
         model.addAttribute("options", new ChooseQuizForm());
         return "index";
     }
 
     @GetMapping("/register")
-    public String viewRegisterPage(Model model){
+    public String viewRegisterPage(Model model) {
         model.addAttribute("user", new User());
 
         return "signup_form";
     }
 
     @PostMapping("/process_register")
-    public String processRegistration(User user){
+    public String processRegistration(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodedPassword = encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
@@ -52,7 +55,15 @@ public class AppController {
     }
 
     @GetMapping("/list_users")
-    public String viewUsersList(){
+    public String viewUsersList(Model model, Principal principal) {
+        /*Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Principal principal = auth.getPrincipal();*/
+
+        String login = principal.getName();
+        User user = repo.findByLogin(login);
+
+        model.addAttribute("user", user);
+
 /*
         model.addAttribute("options", new ChooseQuizForm());
 */

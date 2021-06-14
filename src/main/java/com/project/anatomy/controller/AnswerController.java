@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import java.security.Principal;
 
 import java.util.ArrayList;
@@ -37,10 +38,10 @@ public class AnswerController {
     private int progress = 0; //na którym pytaniu
 
     @Autowired
-    public AnswerController(AnswerManager answersList, QuizManager quiz, UserManager userManager) {        this.answersList = answersList;
+    public AnswerController(AnswerManager answersList, QuizManager quiz, UserManager userManager) {
         this.answersList = answersList;
         this.quiz = quiz;
-        this.userManager=userManager;
+        this.userManager = userManager;
     }
 
     @PostMapping("/flashcard")
@@ -107,7 +108,7 @@ public class AnswerController {
     }
 
     @PostMapping("/nextQuiz")
-    public String viewNextQuiz(Model model, @ModelAttribute UserInput userInput, Principal principal){
+    public String viewNextQuiz(Model model, @ModelAttribute UserInput userInput, Principal principal) {
         String correctAnswer = "";
         String input = userInput.getInput();
         String page = "";
@@ -135,7 +136,7 @@ public class AnswerController {
             page = "quiz";
         } else {
             int totalPoints = userManager.findByLogin(principal.getName()).getPoints();
-            totalPoints=totalPoints+points;
+            totalPoints = totalPoints + points;
             userManager.updatePoints(principal.getName(), totalPoints);
             model.addAttribute("points", "Your total score: " + points + "/" + questions);
             page = "endQuiz";
