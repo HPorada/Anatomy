@@ -1,6 +1,7 @@
 package com.project.anatomy.controller;
 
 import com.project.anatomy.ChooseQuizForm;
+import com.project.anatomy.UserInput;
 import com.project.anatomy.repository.UserRepository;
 import com.project.anatomy.repository.entity.Answer;
 import com.project.anatomy.repository.entity.User;
@@ -61,6 +62,7 @@ public class AppController {
         User user = repo.findByLogin(login);
 
         model.addAttribute("user", user);
+        model.addAttribute("userInput", new UserInput());
 
         return "users";
     }

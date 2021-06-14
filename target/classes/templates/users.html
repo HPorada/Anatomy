@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>AnatomyApp - all users</title>
+    <title>Your account</title>
     <!--
         <link rel="stylesheet" href="main/java/resources/css/bootstrap.min.css">
     -->
@@ -45,13 +45,38 @@
         <br>
         <h5><strong>Login</strong></h5>
         <h6 th:text="${user.getLogin()}"></h6>
-
         <br>
         <h5><strong>E-mail</strong></h5>
         <h6 th:text="${user.getEmail()}"></h6>
         <br>
-        <h6><strong>Points</strong></h6>
+        <h5><strong>Points</strong></h5>
         <h6 th:text="${user.getPoints()}"></h6>
+    </div>
+</div>
+
+<div class="container text-center">
+    <div style="margin-top: 30px">
+        <h5><strong>Add friend</strong></h5>
+    </div>
+    <div style="margin-bottom: 20px">
+        <form th:action="@{/addFriend}" method="post"
+              style="max-width: 600px; margin: 0 auto;"
+              th:object="${userInput}">
+
+            <div class="m-3">
+                <div class="form-group">
+                    <label class="form-label mt-4">Enter login</label>
+                    <input type="text" class="form-control" value="" th:field="*{input}"
+                    />
+                </div>
+            </div>
+            <div style="margin-top: 10px">
+                <button type="submit" class="btn btn-dark">Add friend</button>
+            </div>
+            <div style="margin-top: 30px">
+                <h5 th:text="${message}"></h5>
+            </div>
+        </form>
     </div>
 </div>
 
