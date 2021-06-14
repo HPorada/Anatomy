@@ -65,6 +65,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/nextQuiz").authenticated()
                 .antMatchers("/console/**").permitAll()
                 .antMatchers("/resources/**").permitAll()
+                .antMatchers("/about_flashcards").permitAll()
+                .antMatchers("/about_quiz").permitAll()
                 .antMatchers("/**/*.js", "/**/*.css").permitAll()
                 .anyRequest().permitAll()
                 .and()

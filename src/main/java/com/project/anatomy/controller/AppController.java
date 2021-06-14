@@ -56,18 +56,29 @@ public class AppController {
 
     @GetMapping("/list_users")
     public String viewUsersList(Model model, Principal principal) {
-        /*Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Principal principal = auth.getPrincipal();*/
 
         String login = principal.getName();
         User user = repo.findByLogin(login);
 
         model.addAttribute("user", user);
 
-/*
-        model.addAttribute("options", new ChooseQuizForm());
-*/
         return "users";
     }
+
+    @GetMapping("/about_flashcards")
+    public String viewAboutFlashcards(){
+        return "aboutFlashcards";
+    }
+
+    @GetMapping("/about_quiz")
+    public String viewAboutQuiz(){
+        return "aboutQuiz";
+    }
+
+   /* @PostMapping("/update_login")
+    public String processLoginUpdate(User user){
+        user.setLogin(login);
+
+    }*/
 
 }

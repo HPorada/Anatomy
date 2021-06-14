@@ -34,4 +34,16 @@ public class UserManager {
         user.setPoints(points);
         userRepository.save(user);
     }
+
+    public void updateLogin(String login, String newLogin){
+        User user = userRepository.findByLogin(login);
+        user.setLogin(newLogin);
+        userRepository.save(user);
+    }
+
+    public void updateEmail(String login, String email){
+        User user = userRepository.findByLogin(login);
+        user.setEmail(email);
+        userRepository.save(user);
+    }
 }

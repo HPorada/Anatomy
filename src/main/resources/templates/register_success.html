@@ -24,6 +24,12 @@
                     <a class="nav-link" th:href="@{/list_users}">Account</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" th:href="@{/about_flashcards}">Study Mode</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/about_quiz}">Test Mode</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" th:href="@{/register}">Register</a>
                 </li>
                 <li class="nav-item">
@@ -40,10 +46,11 @@
 <div class="container text-center" style="margin-top: 50px">
     <div>
         <h3>You have successfully signed up to AnatomyApp</h3>
-        <a th:href="@{/login}">
-            <button type="button" class="btn btn-dark btn-lg">Click here to login</button>
-        </a>
-
+        <div style="margin-top: 50px">
+            <a th:href="@{/login}">
+                <button type="button" class="btn btn-dark btn-lg">Click here to login</button>
+            </a>
+        </div>
     </div>
 </div>
 </body>

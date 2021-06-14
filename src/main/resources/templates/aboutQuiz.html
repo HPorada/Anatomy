@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html lang="en" xmlns:th="http://www.thymeleaf.org">
+        <head>
+        <meta charset="UTF-8">
+        <title>AnatomyApp - home</title>
+    <!--
+        <link rel="stylesheet" href="main/java/resources/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    -->
+    <link rel="stylesheet" type="text/css" href="cssFiles/bootstrap.min.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">AnatomyApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/list_users}">Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/about_flashcards}">Study Mode</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/about_quiz}">Test Mode</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/register}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container text-center">
+    <div style="margin-top: 50px">
+        <h1>Test Mode</h1>
+    </div>
+    <hr>
+    <div style="margin-top: 10px">
+        <img src="Images/czlowiek.jpg" alt="Człowiek witruwiański">
+    </div>
+    <div style="margin-top: 10px">
+        <h5>Test Mode of AnatomyApp allows you to test your knowledge about anatomical structures learned from
+            flashcards.
+            After the end you'll get to know your score from the quiz and points will be saved in your account.</h5>
+    </div>
+    <hr>
+    <div>
+        <h5><strong>Step 1: </strong>Choose a set to test and language...</h5>
+        <img src="Images/screenshots/quiz1.png" alt="quiz1">
+    </div>
+    <hr>
+    <div>
+        <h5><strong>Step 2: </strong>...write names of structures highlighted in the pictures...</h5>
+        <img src="Images/screenshots/quiz2.png" alt="quiz2" height="550">
+        <img src="Images/screenshots/quiz3.png" alt="quiz3" height="550">
+    </div>
+    <hr>
+    <div>
+        <h5><strong>Step 3: </strong>...until the end. Congratulations!</h5>
+        <img src="Images/screenshots/quiz4.png" alt="quiz4" width="550">
+    </div>
+    <hr>
+    <div>
+        <h5><strong>Step 4: </strong>Now you can get back to the main page, choose another set or language to test or
+            get back to learning in Study Mode.</h5>
+    </div>
+    <div style="margin-bottom: 30px">
+        <a th:href="@{/}" class="btn btn-lg btn-dark">Return to main page</a>
+    </div>
+</div>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>
