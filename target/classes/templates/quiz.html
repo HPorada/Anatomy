@@ -21,12 +21,6 @@
                     <a class="nav-link" th:href="@{/list_users}">Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/flashcard}">Flashcards</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/quiz}">Quiz</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" th:href="@{/logout}">Logout</a>
                 </li>
             </ul>
@@ -42,7 +36,6 @@
     <div style="margin-bottom: 20px">
         <img th:src="${image}" width="650" height="600"/>
         <h4 th:text="${points}"></h4>
-        <h4 th:text="${test}"></h4>
     </div>
     <div style="margin-bottom: 20px">
         <form th:action="@{/nextQuiz}" method="post"
