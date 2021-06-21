@@ -78,6 +78,27 @@
             </div>
         </form>
     </div>
+    <div style="margin-bottom: 20px">
+        <h5><strong>Friend Ranking</strong></h5>
+    </div>
+    <div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Placement</th>
+            <th scope="col">Name</th>
+            <th scope="col">Points</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rank,iter: ${ranking}" class="table-active">
+            <td th:utext="${iter.index+1}">Name</td>
+            <td th:utext="${rank.username}">Name</td>
+            <td th:utext="${rank.points}">Points</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
 </div>
 
 </body>

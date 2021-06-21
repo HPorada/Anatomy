@@ -31,6 +31,14 @@ public class Quiz {
         this.category = category;
     }
 
+    public Quiz(Long quiz_id, String quizName, String quiz_description, int max_points, String category) {
+        this.quiz_id = quiz_id;
+        this.quizName = quizName;
+        this.quiz_description = quiz_description;
+        this.max_points = max_points;
+        this.category = category;
+    }
+
     public Long getQuiz_id() {
         return quiz_id;
     }

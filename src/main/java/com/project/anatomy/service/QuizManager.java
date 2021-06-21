@@ -38,7 +38,7 @@ public class QuizManager {
     }
 
     @EventListener(ApplicationReadyEvent.class)
-    public void fillCustomersDB(){
+    public void fillQuizDB(){
         save(new Quiz("Skull", "Bones of the skull", 15, "Skeletal system"));
     }
 }

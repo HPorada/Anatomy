@@ -1,6 +1,7 @@
 package com.project.anatomy.controller;
 
 import com.project.anatomy.ChooseQuizForm;
+import com.project.anatomy.RankingPlacement;
 import com.project.anatomy.UserInput;
 import com.project.anatomy.repository.entity.Answer;
 import com.project.anatomy.repository.entity.Friends;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.security.Principal;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -49,6 +51,19 @@ public class FriendsController {
         model.addAttribute("user", user);
 
         model.addAttribute("message", message);
+
+        List<Friends> friendsList = friendsManager.findByFirstId(user.getId());
+        ArrayList<RankingPlacement> ranking = new ArrayList<>();
+        ranking.add(new RankingPlacement(login, user.getPoints()));
+
+        for(int i=0; i<friendsList.size(); i++){
+            String username = userManager.findById(friendsList.get(i).getSecondId()).get().getLogin();
+            int points = userManager.findById(friendsList.get(i).getSecondId()).get().getPoints();
+            ranking.add(new RankingPlacement(username, points));
+        }
+
+        ranking.sort(Comparator.comparing(RankingPlacement::getPoints).reversed());
+        model.addAttribute("ranking", ranking);
 
         return "users";
     }

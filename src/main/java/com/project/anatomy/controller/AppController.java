@@ -1,11 +1,14 @@
 package com.project.anatomy.controller;
 
 import com.project.anatomy.ChooseQuizForm;
+import com.project.anatomy.RankingPlacement;
 import com.project.anatomy.UserInput;
 import com.project.anatomy.repository.UserRepository;
 import com.project.anatomy.repository.entity.Answer;
+import com.project.anatomy.repository.entity.Friends;
 import com.project.anatomy.repository.entity.User;
 import com.project.anatomy.service.AnswerManager;
+import com.project.anatomy.service.FriendsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,7 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class AppController {
@@ -26,11 +29,13 @@ public class AppController {
     private UserRepository repo;
 
     private AnswerManager answersList;
+    private FriendsManager friendsManager;
     private int test = 0;
 
     @Autowired
-    public AppController(AnswerManager answersList) {
+    public AppController(AnswerManager answersList, FriendsManager friendsManager) {
         this.answersList = answersList;
+        this.friendsManager = friendsManager;
     }
 
     @GetMapping("/")
@@ -63,6 +68,19 @@ public class AppController {
 
         model.addAttribute("user", user);
         model.addAttribute("userInput", new UserInput());
+
+        List<Friends> friendsList = friendsManager.findByFirstId(user.getId());
+        ArrayList<RankingPlacement> ranking = new ArrayList<>();
+        ranking.add(new RankingPlacement(user.getLogin(), user.getPoints()));
+
+        for(int i=0; i<friendsList.size(); i++){
+            String username = repo.findById(friendsList.get(i).getSecondId()).get().getLogin();
+            int points = repo.findById(friendsList.get(i).getSecondId()).get().getPoints();
+            ranking.add(new RankingPlacement(username, points));
+        }
+
+        ranking.sort(Comparator.comparing(RankingPlacement::getPoints).reversed());
+        model.addAttribute("ranking", ranking);
 
         return "users";
     }
