@@ -39,10 +39,15 @@ public class FriendsController {
 
         String friendName = userInput.getInput();
         Long userId = userManager.findByLogin(principal.getName()).getId();
-        Long friendId = userManager.findByLogin(friendName).getId();
-        message = "Added " + friendName + " to your friends!";
 
-        friendsManager.save(new Friends(userId, friendId));
+        try{
+            Long friendId = userManager.findByLogin(friendName).getId();
+            message = "Added " + friendName + " to your friends!";
+            friendsManager.save(new Friends(userId, friendId));
+        }
+        catch (NullPointerException e){
+            message = "There is no such user";
+        }
 
         model.addAttribute("userInput", new UserInput());
 
